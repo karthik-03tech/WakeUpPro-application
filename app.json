@@ -1,29 +1,61 @@
 {
   "expo": {
-    "name": "WakeUpPro",
-    "slug": "WakeUpPro",
+    "name": "WakeUp Pro",
+    "slug": "wakeup-pro",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0A0A0F"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.wakeuppro.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio", "fetch", "remote-notification"],
+        "NSMotionUsageDescription": "WakeUp Pro uses the motion sensor to count your steps for the wake-up challenge.",
+        "NSCameraUsageDescription": "Not used."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0A0A0F"
       },
-      "edgeToEdgeEnabled": true
+      "package": "com.wakeuppro.app",
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "USE_EXACT_ALARM",
+        "SCHEDULE_EXACT_ALARM",
+        "ACTIVITY_RECOGNITION",
+        "FOREGROUND_SERVICE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#00D4FF",
+          "sounds": ["./assets/alarm.mp3"],
+          "androidMode": "default"
+        }
+      ],
+      "expo-background-fetch",
+      "expo-task-manager"
+    ],
+    "notification": {
+      "color": "#00D4FF",
+      "androidMode": "default",
+      "androidCollapsedTitle": "WakeUp Pro"
     }
   }
 }
